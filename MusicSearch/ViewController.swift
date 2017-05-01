@@ -30,8 +30,13 @@ class ViewController: UIViewController {
         let task = URLSession.shared.dataTask(with: url!){ data, response, error in
             if let data = data, let response = response {
                 do{
-                    let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
-                    print(json)
+                    let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments) as! [String:Any]
+                    let jsondata = json["results"] as! [[String:Any]]
+                    
+                    for song in jsondata {
+                        let trackName = song["trackName"] as! String
+                        print(trackName)
+                    }
                 }catch{
                     print("Json Serialize Error")
                 }
