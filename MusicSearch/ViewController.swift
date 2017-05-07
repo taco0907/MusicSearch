@@ -9,10 +9,11 @@
 import UIKit
 
 var myTableView: UITableView!
+var mySearchBar: UISearchBar!
 var items_title: [String] = []
 var items_image: [UIImage] = []
 
-class ViewController: UIViewController ,UITableViewDataSource, UITableViewDelegate{
+class ViewController: UIViewController ,UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,12 +23,15 @@ class ViewController: UIViewController ,UITableViewDataSource, UITableViewDelega
         let displayWidth:CGFloat = view.self.frame.width
         let displayHeight:CGFloat = view.self.frame.height
         let barHeight:CGFloat = UIApplication.shared.statusBarFrame.size.height
-        self.showSongs()
+        let searchBarHeight:CGFloat = 50;
+        self.showSongs(term: "bjork")
         
-        
-        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight))
+        mySearchBar = UISearchBar(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: searchBarHeight))
+        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight+searchBarHeight, width: displayWidth, height: displayHeight))
         myTableView.dataSource = self
+        mySearchBar.delegate = self
         
+        self.view.addSubview(mySearchBar)
         self.view.addSubview(myTableView)
     }
 
@@ -37,8 +41,8 @@ class ViewController: UIViewController ,UITableViewDataSource, UITableViewDelega
     }
     
     
-    private func showSongs() {
-        let urlString = "https://itunes.apple.com/search?term=bjork&entity=album&limit=15&lang=ja_jp&country=JP"
+    private func showSongs(term rv_term:String) {
+        let urlString = "https://itunes.apple.com/search?term=\(rv_term)&entity=album&limit=20&lang=ja_jp&country=JP"
         
         let url = URL(string: urlString)
         let task = URLSession.shared.dataTask(with: url! as URL){ data, response, error in
@@ -102,7 +106,25 @@ class ViewController: UIViewController ,UITableViewDataSource, UITableViewDelega
         print("select: ¥(indexPath.row)")
     }
     
-
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        mySearchBar.resignFirstResponder()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        items_title.removeAll()
+        items_image.removeAll()
+        myTableView.reloadData()
+        
+        let text = mySearchBar.text!
+        print(text)
+        self.showSongs(term: text)
+        
+    }
+    
 
 }
 
