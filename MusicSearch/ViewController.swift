@@ -119,8 +119,7 @@ class ViewController: UIViewController ,UITableViewDataSource, UITableViewDelega
         items_image.removeAll()
         myTableView.reloadData()
         
-        let text = mySearchBar.text!
-        print(text)
+        let text = mySearchBar.text!.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         self.showSongs(term: text)
         
     }
