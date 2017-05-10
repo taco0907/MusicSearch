@@ -13,6 +13,8 @@ var mySearchBar: UISearchBar!
 var items_title: [String] = []
 var items_image: [UIImage] = []
 
+var myButton: UIButton!
+
 class ViewController: UIViewController ,UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
 
     override func viewDidLoad() {
@@ -26,13 +28,19 @@ class ViewController: UIViewController ,UITableViewDataSource, UITableViewDelega
         let searchBarHeight:CGFloat = 50;
         self.showSongs(term: "bjork")
         
-        mySearchBar = UISearchBar(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: searchBarHeight))
-        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight+searchBarHeight, width: displayWidth, height: displayHeight))
+        mySearchBar = UISearchBar(frame: CGRect(x: 0, y: barHeight+15, width: displayWidth, height: searchBarHeight))
+        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight+searchBarHeight+15, width: displayWidth, height: displayHeight))
         myTableView.dataSource = self
         mySearchBar.delegate = self
         
+        myButton = UIButton(frame: CGRect(x: 10, y: barHeight, width: 30, height: 15))
+        myButton.setTitle("Go", for: .normal)
+        myButton.setTitleColor(UIColor.blue, for: .normal)
+        myButton.addTarget(self, action: #selector(ViewController.tapButton(_:)), for: .touchUpInside)
+        
         self.view.addSubview(mySearchBar)
         self.view.addSubview(myTableView)
+        self.view.addSubview(myButton)
     }
 
     override func didReceiveMemoryWarning() {
@@ -102,8 +110,11 @@ class ViewController: UIViewController ,UITableViewDataSource, UITableViewDelega
         return cell   
     }
     
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("select: ¥(indexPath.row)")
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     let next = storyboard!.instantiateViewController(withIdentifier: "nextView")
+     self.present(next, animated: true, completion: nil)
+
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -115,6 +126,7 @@ class ViewController: UIViewController ,UITableViewDataSource, UITableViewDelega
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
         items_title.removeAll()
         items_image.removeAll()
         myTableView.reloadData()
@@ -122,6 +134,11 @@ class ViewController: UIViewController ,UITableViewDataSource, UITableViewDelega
         let text = mySearchBar.text!.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         self.showSongs(term: text)
         
+    }
+    
+    func tapButton(_ sender:UIButton) {
+        let next = storyboard!.instantiateViewController(withIdentifier: "nextView")
+        self.present(next, animated: true, completion: nil)
     }
     
 

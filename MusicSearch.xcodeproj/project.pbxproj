@@ -14,6 +14,7 @@
 		984016231EB609B800A70950 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 984016211EB609B800A70950 /* LaunchScreen.storyboard */; };
 		9840162E1EB609B800A70950 /* MusicSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9840162D1EB609B800A70950 /* MusicSearchTests.swift */; };
 		984016391EB609B800A70950 /* MusicSearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984016381EB609B800A70950 /* MusicSearchUITests.swift */; };
+		98E428E71EC35A54002A39A0 /* NextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E428E61EC35A54002A39A0 /* NextViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		984016341EB609B800A70950 /* MusicSearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicSearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		984016381EB609B800A70950 /* MusicSearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSearchUITests.swift; sourceTree = "<group>"; };
 		9840163A1EB609B800A70950 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		98E428E61EC35A54002A39A0 /* NextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				984016181EB609B800A70950 /* AppDelegate.swift */,
 				9840161A1EB609B800A70950 /* ViewController.swift */,
 				9840161C1EB609B800A70950 /* Main.storyboard */,
+				98E428E61EC35A54002A39A0 /* NextViewController.swift */,
 				9840161F1EB609B800A70950 /* Assets.xcassets */,
 				984016211EB609B800A70950 /* LaunchScreen.storyboard */,
 				984016241EB609B800A70950 /* Info.plist */,
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9840161B1EB609B800A70950 /* ViewController.swift in Sources */,
+				98E428E71EC35A54002A39A0 /* NextViewController.swift in Sources */,
 				984016191EB609B800A70950 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -507,6 +511,7 @@
 				9840163F1EB609B800A70950 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		984016401EB609B800A70950 /* Build configuration list for PBXNativeTarget "MusicSearchTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +520,7 @@
 				984016421EB609B800A70950 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		984016431EB609B800A70950 /* Build configuration list for PBXNativeTarget "MusicSearchUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +529,7 @@
 				984016451EB609B800A70950 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
